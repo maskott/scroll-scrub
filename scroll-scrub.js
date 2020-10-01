@@ -17,8 +17,11 @@ const preloadImages = () => {
 };
 
 // Set canvas dimensions
-canvas.width=1158;
-canvas.height=770;
+canvas.width=1920;
+canvas.height=1080;
+// context.canvas.width=window.innerWidth;
+// context.canvas.height=window.innerHeight;
+// context.canvas.height=window.innerWidth * (9 / 16);
 
 // Create, load and draw the image
 const img = new Image()
@@ -45,3 +48,20 @@ window.addEventListener('scroll', () => {
 });
 
 preloadImages();
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to('#label_01', {
+  scrollTrigger: {
+    trigger: '#trigger_01',
+    toggleActions: 'restart pause reverse pause',
+    start: 'center center',
+    end: 'center',
+    scrub: 0.5,
+    markers: true,
+  },
+  x: -200,
+  y: -10,
+  opacity: 0,
+  duration: 3,
+});
